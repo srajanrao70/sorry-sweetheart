@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce7">
+<title>A Little Surprise for Baby ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  :root { --rose:#bd426e; --deep:#77334e; --soft:#fff7fa; }
+  body {
+    margin:0; min-height:100vh; padding:22px;
+    display:grid; place-items:center; overflow:hidden;
+    font-family: Georgia, "Times New Roman", serif; color:var(--deep);
+    background: radial-gradient(circle at 20% 10%, #fffafd, transparent 35%),
+                linear-gradient(145deg,#fce8ef,#f4cbd9 55%,#f9e8ee);
+  }
+  .glow { position:fixed; width:260px; height:260px; border-radius:50%;
+    background:#fff; filter:blur(65px); opacity:.42; pointer-events:none; }
+  .glow.one { top:-100px; right:-70px; }
+  .glow.two { bottom:-120px; left:-80px; }
+  .wrap { width:min(100%,520px); position:relative; z-index:2; }
+  .card {
+    min-height:570px; padding:34px 26px; border-radius:30px;
+    background:rgba(255,255,255,.86); border:1px solid rgba(255,255,255,.9);
+    box-shadow:0 22px 70px rgba(119,51,78,.17);
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    text-align:center; backdrop-filter:blur(10px);
+  }
+  .screen { display:none; width:100%; animation:appear .55s ease both; }
+  .screen.active { display:block; }
+  .eyebrow { letter-spacing:3px; text-transform:uppercase; font:11px Arial,sans-serif; color:#b66b87; }
+  h1 { font-size:clamp(2.2rem,9vw,3.5rem); color:var(--rose); margin:13px 0; line-height:1.05; }
+  h2 { font-size:1.8rem; color:var(--rose); margin:12px 0 18px; }
+  p { font-size:1.08rem; line-height:1.8; margin:13px 0; }
+  .big-heart { font-size:68px; display:inline-block; filter:drop-shadow(0 8px 12px #e9a9bf); animation:heartbeat 1.6s infinite; }
+  .envelope { font-size:100px; margin:18px 0; cursor:pointer; display:inline-block; animation:float 3s ease-in-out infinite; }
+  .memory { padding:18px; margin:18px 0; border-radius:20px; background:#fff0f5; border:1px solid #f7d5e1; font-style:italic; }
+  .divider { color:#d78ca7; letter-spacing:8px; margin:15px 0; }
+  .btn {
+    border:0; border-radius:999px; padding:14px 22px; margin:9px 5px 0;
+    font-size:1rem; font-weight:600; cursor:pointer; font-family:Arial,sans-serif;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform:translateY(-2px); box-shadow:0 8px 18px #d99bb4; }
+  .primary { color:white; background:linear-gradient(135deg,#c94e7b,#a93260); }
+  .secondary { color:#963d61; background:#f9e4ec; }
+  .tiny { font:12px Arial,sans-serif; color:#a66c82; margin-top:22px; }
+  .progress { display:flex; justify-content:center; gap:7px; margin:0 0 15px; }
+  .dot { width:7px; height:7px; border-radius:50%; background:#edc4d3; }
+  .dot.on { background:#bd426e; width:20px; border-radius:8px; }
+  .float {
+    position:fixed; z-index:1; bottom:-35px; color:rgba(189,66,110,.28);
+    pointer-events:none; animation:rise linear infinite;
+  }
+  @keyframes appear { from { opacity:0; transform:translateY(12px) scale(.98); } to {opacity:1;transform:none;} }
+  @keyframes heartbeat { 50% { transform:scale(1.12); } }
+  @keyframes float { 50% { transform:translateY(-12px) rotate(3deg); } }
+  @keyframes rise { to { transform:translateY(-115vh) rotate(35deg); opacity:0; } }
+  @media(max-height:700px) { .card { min-height:0; padding:25px 21px; } p {line-height:1.6;} }
+  @media(prefers-reduced-motion:reduce) { *,*::before,*::after {animation:none!important;transition:none!important;} }
+</style>
+</head>
+<body>
+<div class="glow one"></div><div class="glow two"></div>
+<main class="wrap">
+  <div class="progress" aria-label="Surprise progress">
+    <span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+  <section class="card">
+    <div class="screen active" id="s1">
+      <div class="eyebrow">A little surprise, made just for you</div>
+      <div class="big-heart">💗</div>
+      <h1>Hey, Baby</h1>
+      <p>I have something from my heart that I want you to read.</p>
+      <div class="envelope" role="img" aria-label="Love letter">💌</div>
+      <p class="tiny">A tiny letter, with a whole lot of love.</p>
+      <button class="btn primary" onclick="go(2)">Open your surprise ❤️</button>
+    </div>
+
+    <div class="screen" id="s2">
+      <div class="eyebrow">A little trip down memory lane</div>
+      <h2>I miss us, Baby…</h2>
+      <div class="big-heart">🥺</div>
+      <p>I miss our old days — our little talks, our laughter, the silly moments, and the comfort of simply having each other.</p>
+      <div class="memory">“Some of my favourite moments are the simple ones, because they were with you.”</div>
+      <p>Even when life gets busy and distance makes things difficult, those memories still mean the world to me.</p>
+      <button class="btn primary" onclick="go(3)">There's something I need to say…</button>
+    </div>
+
+    <div class="screen" id="s3">
+      <div class="eyebrow">From the bottom of my heart</div>
+      <h2>I'm truly sorry, Baby</h2>
+      <div class="big-heart">❤️‍🩹</div>
+      <p>I'm sorry for everything I've done that hurt you, for the times I made you sad, and for the moments I didn't understand your feelings the way I should have.</p>
+      <p>I know a sorry cannot erase what happened. I don't want to make excuses or ask you to forget it. I want to understand, do better, and show you through my actions that your heart matters to me.</p>
+      <p>You are everything to me. I love you, I miss you, and I'm so grateful to have you in my life.</p>
+      <button class="btn primary" onclick="go(4)">One last thing, my love…</button>
+    </div>
+
+    <div class="screen" id="s4">
+      <div class="eyebrow">My heart's little promise</div>
+      <div class="big-heart">💞</div>
+      <h2>I want to be yours, forever</h2>
+      <p>I don't expect everything to become perfect overnight. I just want us to keep choosing each other, keep understanding each other, and make more beautiful memories together.</p>
+      <p>I miss you more than I can explain. I miss us. And I hope we get to create many more old days to look back on someday.</p>
+      <h2>Can you forgive me, Baby? 🥺</h2>
+      <p class="tiny">You don't have to answer right away. Take the time you need. Your feelings matter to me.</p>
+      <button class="btn primary" onclick="answer('Thank you for giving my heart another chance, Baby. I love you. ❤️')">I forgive you ❤️</button>
+      <button class="btn secondary" onclick="answer('I understand, Baby. Take all the time you need. I’m here, and I love you. ❤️')">I need a little time</button>
+      <div id="reply" aria-live="polite"></div>
+    </div>
+  </section>
+</main>
+<script>
+  let current = 1;
+  function go(n) {
+    document.getElementById('s'+current).classList.remove('active');
+    current = n;
+    document.getElementById('s'+current).classList.add('active');
+    document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===n-1));
+  }
+  function answer(message) {
+    document.getElementById('reply').innerHTML = '';
+    const p = document.createElement('p');
+    p.textContent = message;
+    p.style.color = '#b73566';
+    p.style.fontWeight = 'bold';
+    document.getElementById('reply').appendChild(p);
+  }
+  const hearts = ['♡','♥','✿','💕'];
+  for(let i=0;i<22;i++){
+    const e=document.createElement('span');
+    e.className='float'; e.textContent=hearts[i%hearts.length];
+    e.style.left=(Math.random()*100)+'vw';
+    e.style.animationDuration=(8+Math.random()*8)+'s';
+    e.style.animationDelay=(Math.random()*10)+'s';
+    e.style.fontSize=(16+Math.random()*18)+'px';
+    document.body.appendChild(e);
+  }
+</script>
+</body>
+</html>
